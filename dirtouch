@@ -1,0 +1,20 @@
+#!/bin/bash
+if [ $# -eq 0 ];
+then 
+  echo "Usage (v1.0.0):"
+  echo "     dirtouch FOLDER/PATH/files"
+  echo " "
+  echo "example:"
+  echo "dirtouch foo/bar/{1..9}.txt -- will create two folders and files through 1 to 9.txt inside foo/bar folder"
+  echo " "
+  echo "NOTE:"
+  echo "     always the last expression after a / is considered as the files you want to be created"
+  echo "     this doesn't expand to create multiple directories like mkdir foo/{1..3} will create 3 folders inside foo"
+  exit 1;
+fi
+
+FOLDER=$(echo "$1" | rev | cut -d "/" -f2- | rev)
+
+mkdir -p "$FOLDER"
+
+touch $@
