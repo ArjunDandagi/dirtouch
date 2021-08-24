@@ -1,14 +1,16 @@
 #!/bin/bash
 if [ $# -eq 0 ];
 then
-  cat << EOF 
+
+cat << EOF
     Usage (v2.0.0):
-        dirtouch FOLDER/ANOTHERFOLDER/file"
+        dirtouch FOLDER/ANOTHERFOLDER/file
     Example:
         dirtouch foo/bar/{1..9}.txt -- will create two folders  and files through 1 to 9.txt inside foo/bar folder
         dirtouch foo/{1..2}/{1..2}.txt -- will create foo/1/1 foo/1/2 foo/2/1 foo/2/2
-  EOF
-  exit 1;
+EOF
+
+exit 1;
 fi
 
 for FILEPATH in "$@"
